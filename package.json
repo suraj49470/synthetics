@@ -1,0 +1,16 @@
+{
+  "name": "synthetics-surak",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "npx @elastic/synthetics push  --auth Y3A0TF9aQUJNUEtEMUo2eXgyZzM6Q3YtMFRtVW9Ra0dzR3FnZXVnamVlQQ=="
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/synthetics": "^1.11.0"
+  }
+}

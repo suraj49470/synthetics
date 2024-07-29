@@ -1,0 +1,38 @@
+{
+    "name": "test",
+    "description": "test",
+    "indicator": {
+      "type": "sli.synthetics.availability",
+      "params": {
+        "projects": [
+          {
+            "label": "synthetics",
+            "value": "synthetics"
+          }
+        ],
+        "tags": [],
+        "monitorIds": [
+          {
+            "value": "*",
+            "label": "All"
+          }
+        ],
+        "index": "synthetics-*",
+        "filter": ""
+      }
+    },
+    "budgetingMethod": "occurrences",
+    "timeWindow": {
+      "duration": "7d",
+      "type": "rolling"
+    },
+    "objective": {
+      "target": 0.9998900000000001
+    },
+    "tags": [],
+    "groupBy": [
+      "monitor.name",
+      "observer.geo.name",
+      "monitor.id"
+    ]
+  }
