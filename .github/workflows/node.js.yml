@@ -36,8 +36,8 @@ jobs:
     - name: Create SLOs
       run: |
         ls
-        cd scripts
-        chmod +x scripts/*
+        cd ./scripts
+        chmod +x ./scripts/*
         ls -lah
         ./main.sh
 
