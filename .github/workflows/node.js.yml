@@ -29,11 +29,13 @@ jobs:
         ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
 
   create_SLOS:
+    needs: [push_monitors]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Create SLOs
       run: |
+        ls
         cd scripts
         chmod +x scripts/*
         ls -lah
