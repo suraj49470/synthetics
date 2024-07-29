@@ -2,13 +2,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
-  build:
-
+  push_monitors:
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,5 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - name: publish monitors
+      run: npx @elastic/synthetics push --auth $ELASTIC_API_KEY
+      env:
+        ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
