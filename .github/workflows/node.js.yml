@@ -37,7 +37,7 @@ jobs:
       run: |
         ls
         cd ./scripts
-        chmod +x ./
+        chmod +x *.sh  
         ls -lah
         ./main.sh
 
