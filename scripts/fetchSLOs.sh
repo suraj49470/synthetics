@@ -5,9 +5,9 @@
 SLOs_names=()
 
 # Fetch SLOs data
-SLOs=$(curl -s -X GET https://f86c0f9dcdd143a89d2fe4cb63024121.us-east-2.aws.elastic-cloud.com:9243/s/default/api/observability/slos \
- --user "common_user:Mastek@12" \
- -H "kbn-xsrf: string")
+SLOs=$(curl -s -X GET $ELASTIC_URL/s/default/api/observability/slos \
+ --user "$ELASTIC_USER_NAME:$ELASTIC_USER_PASSWORD" \
+ -H "kbn-xsrf: $ELASTIC_XSRF_STRING")
 
 # Print raw SLOs data
 #echo "$SLOs"

@@ -11,9 +11,9 @@ json_content="$1"
 
 # Ensure the JSON content is correctly quoted for `curl`
 # The `-d` option should be wrapped in double quotes, and JSON content should be properly escaped
-response=$(curl -X POST "https://f86c0f9dcdd143a89d2fe4cb63024121.us-east-2.aws.elastic-cloud.com:9243/s/default/api/observability/slos" \
-    --user "common_user:Mastek@12" \
-    -H "kbn-xsrf: Mastek@12" \
+response=$(curl -X POST "$ELASTIC_URL/s/default/api/observability/slos" \
+    --user "$ELASTIC_USER_NAME:$ELASTIC_USER_PASSWORD" \
+    -H "kbn-xsrf: $ELASTIC_XSRF_STRING" \
     -H "Content-Type: application/json" \
     -d "$json_content" 2>&1)  # Capture error messages from `curl`
 
