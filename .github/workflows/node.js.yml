@@ -27,3 +27,15 @@ jobs:
       run: npx @elastic/synthetics push --auth $ELASTIC_API_KEY
       env:
         ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
+
+  create_SLOS:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Create SLOs
+      run: |
+        cd scripts
+        ./main.sh
+
+
+
