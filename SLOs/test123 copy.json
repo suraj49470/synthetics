@@ -1,0 +1,38 @@
+{
+    "name": "test1234",
+    "description": "test",
+    "indicator": {
+      "type": "sli.synthetics.availability",
+      "params": {
+        "projects": [
+          {
+            "label": "synthetics-surak",
+            "value": "synthetics-surak"
+          }
+        ],
+        "tags": [],
+        "monitorIds": [
+          {
+            "label": "Todos Lightweight",
+            "value": "todos-lightweight-synthetics-surak-default"
+          }
+        ],
+        "index": "synthetics-*",
+        "filter": ""
+      }
+    },
+    "budgetingMethod": "occurrences",
+    "timeWindow": {
+      "duration": "7d",
+      "type": "rolling"
+    },
+    "objective": {
+      "target": 0.99
+    },
+    "tags": [],
+    "groupBy": [
+      "monitor.name",
+      "observer.geo.name",
+      "monitor.id"
+    ]
+  }
