@@ -9,7 +9,12 @@ on:
 jobs:
   push_monitors:
     runs-on: ubuntu-latest
-
+    env:
+      ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
+      ELASTIC_USER_NAME: ${{ secrets.ELASTIC_USER_NAME }}
+      ELASTIC_USER_PASSWORD: ${{ secrets.ELASTIC_USER_PASSWORD }}
+      ELASTIC_XSRF_STRING: ${{ secrets.ELASTIC_XSRF_STRING }}
+      ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
     strategy:
       matrix:
         node-version: [18.x]
@@ -25,8 +30,8 @@ jobs:
     - run: npm ci
     - name: publish monitors
       run: npx @elastic/synthetics push --auth $ELASTIC_API_KEY
-      env:
-        ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
+      # env:
+      #   ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
 
   create_SLOS:
     needs: [push_monitors]
@@ -34,16 +39,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Create SLOs
-      env:
-          ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
-          ELASTIC_USER_NAME: ${{ secrets.ELASTIC_USER_NAME }}
-          ELASTIC_USER_PASSWORD: ${{ secrets.ELASTIC_USER_PASSWORD }}
-          ELASTIC_XSRF_STRING: ${{ secrets.ELASTIC_XSRF_STRING }}
+      # env:
+      #     ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
+      #     ELASTIC_USER_NAME: ${{ secrets.ELASTIC_USER_NAME }}
+      #     ELASTIC_USER_PASSWORD: ${{ secrets.ELASTIC_USER_PASSWORD }}
+      #     ELASTIC_XSRF_STRING: ${{ secrets.ELASTIC_XSRF_STRING }}
       run: |
-        ls
         cd ./scripts
         chmod +x *.sh  
-        ls -lah
         ./main.sh
 
 
